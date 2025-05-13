@@ -5,6 +5,9 @@ from drf_spectacular.views import (
     SpectacularRedocView,
     SpectacularSwaggerView,
 )
+from django.conf import settings
+from django.conf.urls.static import static
+from uploader.router import router as uploader_router
 from rest_framework.routers import DefaultRouter
 
 from core.views import UserViewSet, CategoriaViewSet, EditoraViewSet, AutorViewSet, LivroViewSet
@@ -33,4 +36,5 @@ urlpatterns = [
     ),
     # API
     path('api/', include(router.urls)),
+    path("api/media/", include(uploader_router.urls)),
 ]
